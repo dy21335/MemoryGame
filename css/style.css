@@ -7,6 +7,7 @@ body{
     background-color: #FFFFCC;
 }
 
+
 #wrapper{
     width: 480px;
     height:480px;
@@ -17,7 +18,7 @@ body{
     padding: 10px;
 }
 
-.box{
+#box{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -28,17 +29,71 @@ body{
 }
 
 ul>li{
+    box-sizing: border-box;
     width: 100px;
     height: 100px;
-    background-color: #333333;
     text-align: center;
     border-radius: 10px;
     list-style: none;
 }
 
 /*
+*翻转类
+ */
+.b_overturn{
+    background-color:#888888;
+    text-align: center;
+}
+
+.a_overturn_1{
+    padding-top: 40px;
+    background-color: #ffe957;
+    text-align: center;
+}
+
+.a_overturn_2{
+    padding-top: 40px;
+    background-color: #f29f3f;
+    text-align: center;
+}
+.a_overturn_3{
+    padding: 40px;
+    background-color: #f2753f;
+    text-align: center;
+}
+.a_overturn_4{
+    padding-top: 40px;
+    background-color: #8ec2d6;
+    text-align: center;
+}
+
+.a_overturn_5{
+    padding-top: 40px;
+    background-color:#b31800;
+    text-align: center;
+}
+.a_overturn_6{
+    padding-top: 40px;
+    background-color: #d9b316;
+    text-align: center;
+}
+.a_overturn_7{
+    padding-top: 40px;
+    background-color:#83fcd8;
+    text-align: center;
+}
+
+.a_overturn_8{
+    padding-top: 40px;
+    background-color:#21a675;
+    text-align: center;
+}
+
+/*
 *style for the button
 */
+
+
 #bwrapper{
     text-align: center;
     margin:25px;
