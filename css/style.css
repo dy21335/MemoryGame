@@ -1,0 +1,35 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: #FFFFCC;
+}
+
+#wrapper{
+    display: flex;
+    width: 480px;
+    height:480px;
+    margin:80px auto ;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px #888888;
+    background-image: -webkit-linear-gradient(top,#3399CC,#9999CC);
+    padding: 10px;
+}
+
+.box{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+
+}
+
+#wrapper div{
+    width: 100px;
+    height: 100px;
+    background-color: #333333;
+    text-align: center;
+    border-radius: 10px;
+}
