@@ -1,17 +1,20 @@
 
 
 function initiate() {
+    //把record设置为true，打乱card图片样式，设置开始时初始操作：所有牌面展示2s，然后全部翻转过去
     record=true;
-    shuffle(cards,card_before);
+    shuffle(cards,card_style);
+
     clickable(cards,0);
     setTimeout(function(){
         overturn_grey();
         clickable(cards,1);
     },2000);
+
+    //添加点击事件
     click_card(box,cards);
 
     var restart=document.getElementById("btn");
-    console.log(restart.tagName);
     restart.onclick=function (event) {
         initiate();
     }
@@ -20,7 +23,7 @@ function initiate() {
 function overturn_grey() {
     for(var i=0;i<cards.length;i++)
     {
-        cards[i].setAttribute("class",card_after);
+        cards[i].setAttribute("class",card_grey);
     }
 }
 
@@ -74,7 +77,7 @@ function click_card(box,cards) {
         event=event||window.event;
         target=event.target;
         id=parseInt(target.id);
-        target.className=card_before[id];
+        target.className=card_style[id];
         target.setAttribute("disable","true");
         if(record){
             lastone=target;
@@ -93,21 +96,4 @@ function click_card(box,cards) {
         }
 
     }
-    // for(var i=0;i<cards.length;i++)
-    // {
-    //     console.log(i);
-    //     current=cards[i];
-    //     style=card_before[i+1];
-    //     current.onclick=function (event) {
-    //         console.log(current.className);
-    //         current.setAttribute("class",style);   onclick里面为什么不能用card_before[i];
-    //         // if(record)
-    //         //     lastone=cards[i];
-    //         // else
-    //         //     if(lastone.className==cards[i]){}
-    //         //     else
-    //         //          overturn_grey();
-    //     };
-    //
-    // }
 }

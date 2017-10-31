@@ -14,7 +14,7 @@ body{
     margin:30px auto 0 auto;
     border-radius: 10px;
     box-shadow: 10px 10px 15px #888888;
-    background-image: -webkit-linear-gradient(top,#3399CC,#9999CC);
+    background-image: -webkit-linear-gradient(top left,#7EC0EE,#9F79EE);
     padding: 10px;
 }
 
@@ -41,7 +41,7 @@ ul>li{
 *翻转类
  */
 .b_overturn{
-    background-color:#888888;
+    background-color:#696969;
     text-align: center;
 }
 

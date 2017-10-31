@@ -1,3 +1,5 @@
-var str="hi";
-var i=1;
-console.log(str+(i+1));
+window.cards=box.getElementsByTagName('li');
+cards[1].onclick=function (event) {
+    cards[1].setAttribute("class",style[1]);
+
+}
