@@ -3,7 +3,8 @@ window.onload=function() {
 //var cards=document.getElementsByTagName('li');
      window.card_before=[],//翻转前的card图，灰色
         window.card_after;//翻转后的card图
-
+    window.lastone;//记录上一个点击的值
+    window.record=true;//记录是否是第一次点击
 
     card_before[1]="a_overturn_1 fa fa-bomb";
     card_before[2]="a_overturn_2 fa fa-building";
@@ -31,16 +32,4 @@ window.onload=function() {
     //     window.cardsList[i]=window.cards[i].getElementById('i');
     // }
     initiate();
-    yicifanzhuan();
-    
-    function yicifanzhuan() {
-        for(var i=0;i<cards.length;i++)
-        {
-            cards[i].onclick=function () {
-                cards[i].setAttribute("class",card_before[i]);
-                cards[i].setAttribute("disable","disable");
-            }
-        }
-    }
-  
 };
