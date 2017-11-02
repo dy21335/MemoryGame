@@ -4,12 +4,8 @@ function initiate() {
     //把record设置为true，打乱card图片样式，设置开始时初始操作：所有牌面展示2s，然后全部翻转过去
     record=true;
     shuffle(cards,card_style);
-
     clickable(cards,0);
-    setTimeout(function(){
         overturn_grey();
-        clickable(cards,1);
-    },2000);
 
     //添加点击事件
     click_card(box,cards);
@@ -21,10 +17,15 @@ function initiate() {
 }
 
 function overturn_grey() {
-    for(var i=0;i<cards.length;i++)
-    {
-        cards[i].setAttribute("class",card_grey);
-    }
+    setTimeout(function () {
+        for(var i=0;i<cards.length;i++)
+        {
+            cards[i].className=card_grey+" animated flipInX";
+            // cards[i].setAttribute("class",card_grey);
+        }
+        clickable(cards,1);
+    },2000);
+
 }
 
 
@@ -77,7 +78,8 @@ function click_card(box,cards) {
         event=event||window.event;
         target=event.target;
         id=parseInt(target.id);
-        target.className=card_style[id];
+        target.className="";
+        target.className=card_style[id]+" animated flipInY";
         target.setAttribute("disable","true");
         if(record){
             lastone=target;
@@ -85,14 +87,14 @@ function click_card(box,cards) {
         }
         else
         {
-            if(target.className==lastone.className){record=true}
-            else {
-                setTimeout(function(){
-                    overturn_grey();
-                    clickable(cards,1);
-                    record=true;
-                },1000);
+            if(target.className==lastone.className){
             }
+            else {
+                    overturn_grey();
+                    target.className+="animated shake";
+                    lastone.className+="animated shake";
+            }
+            record=true;
         }
 
     }
