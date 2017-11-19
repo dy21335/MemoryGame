@@ -24,22 +24,7 @@ window.onload=function() {
         "a_overturn_8 fa fa-delicious"];
 
 
-    // card_style = [" ", "a_overturn_1 fa fa-bomb animated flipInY",
-    //     "a_overturn_2 fa fa-building animated flipInY",
-    //     "a_overturn_3 fa fa-car animated flipInY",
-    //     "a_overturn_4 fa fa-codepen animated flipInY",
-    //     "a_overturn_5 fa  fa-cube animated flipInY",
-    //     "a_overturn_6 fa fa-cubes animated flipInY",
-    //     "a_overturn_7 fa fa-database animated flipInY",
-    //     "a_overturn_8 fa fa-delicious animated flipInY",
-    //     "a_overturn_1 fa fa-bomb animated flipInY",
-    //     "a_overturn_2 fa fa-building animated flipInY",
-    //     "a_overturn_3 fa fa-car animated flipInY",
-    //     "a_overturn_4 fa fa-codepen animated flipInY",
-    //     "a_overturn_5 fa  fa-cube animated flipInY",
-    //     "a_overturn_6 fa fa-cubes animated flipInY",
-    //     "a_overturn_7 fa fa-database animated flipInY",
-    //     "a_overturn_8 fa fa-delicious animated flipInY"];
+
 
    window.card_grey="b_overturn";
 

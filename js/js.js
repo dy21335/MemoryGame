@@ -5,7 +5,7 @@ function initiate() {
     record=true;
     shuffle(cards,card_style);
     clickable(cards,0);
-        overturn_grey();
+        overturn_grey(2000);
 
     //添加点击事件
     click_card(box,cards);
@@ -16,7 +16,7 @@ function initiate() {
     }
 }
 
-function overturn_grey() {
+function overturn_grey(time) {
     setTimeout(function () {
         for(var i=0;i<cards.length;i++)
         {
@@ -24,7 +24,7 @@ function overturn_grey() {
             // cards[i].setAttribute("class",card_grey);
         }
         clickable(cards,1);
-    },2000);
+    },time);
 
 }
 
@@ -32,17 +32,11 @@ function overturn_grey() {
 function random(arr) {
     for(var i=1;i<arr.length;i++){
         var iRand=parseInt((arr.length-1)*Math.random()+1);
-        // console.log(iRand);
-        // console.log(arr[i]);
         var temp=arr[i];
         arr[i]=arr[iRand];
         arr[iRand]=temp;
-        // console.log(arr[i]);
     }
     return arr;
-    // arr.sort(function () {
-    //     return Math.random()-0.5
-    // });
 }
 
 //重新开始游戏后洗牌,传入li和打乱后的style数组
@@ -90,7 +84,7 @@ function click_card(box,cards) {
             if(target.className==lastone.className){
             }
             else {
-                    overturn_grey();
+                    overturn_grey(1000);
                     target.className+="animated shake";
                     lastone.className+="animated shake";
             }
