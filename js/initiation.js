@@ -1,10 +1,9 @@
-window.onload=function() {
+window.onload = function () {
 
-//var cards=document.getElementsByTagName('li');
-     window.card_style=[],//多彩card图
-        window.card_grey;//灰色card图
+    window.card_style = [],//多彩card图
+    window.card_grey;//灰色card图
     window.lastone;//记录上一个点击的card元素，方便做对比
-    window.record=true;//true表示一次配对行为的第一次点击，false表示第二次点击
+    window.record = true;//true表示一次配对行为的第一次点击，false表示第二次点击
 
     card_style = [" ", "a_overturn_1 fa fa-bomb",
         "a_overturn_2 fa fa-building",
@@ -24,11 +23,9 @@ window.onload=function() {
         "a_overturn_8 fa fa-delicious"];
 
 
+    window.card_grey = "b_overturn";
 
-
-   window.card_grey="b_overturn";
-
-    window.box=document.getElementById('box');
-    window.cards=box.getElementsByTagName('li');
+    window.box = document.getElementById('box');
+    window.cards = box.getElementsByTagName('li');
     initiate();
 };
