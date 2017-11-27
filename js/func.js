@@ -38,7 +38,8 @@ function initiate() {
     cardIns.clickable(cardIns.box,false);
     cardIns.overturnGrey(2000,cardIns);
     cardIns.clickCard(cardIns);//添加点击事件
-    var restart = document.getElementById("btn");
+
+    var restart = document.getElementById("undo");
     restart.onclick = function (event) {
         initiate();
     }

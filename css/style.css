@@ -7,11 +7,28 @@ body{
     background-color: #FFFFCC;
 }
 
+#top{
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+}
+#top>h1{
+    text-align: center;
+    color: #696969;
+}
 
+#top>span{
+    padding: 10px 2px 1px;
+    font-size: 21px;
+}
+
+#top>#undo{
+    margin-left: 100px;
+}
 #wrapper{
     width: 480px;
     height:480px;
-    margin:30px auto 0 auto;
+    margin:10px auto 0 auto;
     border-radius: 10px;
     box-shadow: 10px 10px 15px #888888;
     background-image: -webkit-linear-gradient(top left,#7EC0EE,#9F79EE);
@@ -57,7 +74,7 @@ ul>li{
     text-align: center;
 }
 .a_overturn_3{
-    padding: 40px;
+    padding-top: 40px;
     background-color: #f2753f;
     text-align: center;
 }
