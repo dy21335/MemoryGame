@@ -2,33 +2,49 @@
 *初始化，包括界面初始化，添加点击事件
  */
 function initiate() {
-    record = true;
-    shuffle(cards, card_style);
-    clickable(cards, 0);
-    overturn_grey(2000);
+    var cardStyle,
+        greyCard,
+        box,
+        cards,
+        cardIns;
 
-    //添加点击事件
-    click_card(box, cards);
+    //一些变量的初始化
+    cardStyle = [" ", "a_overturn_1 fa fa-bomb",
+        "a_overturn_2 fa fa-building",
+        "a_overturn_3 fa fa-car",
+        "a_overturn_4 fa fa-codepen",
+        "a_overturn_5 fa  fa-cube",
+        "a_overturn_6 fa fa-cubes",
+        "a_overturn_7 fa fa-database",
+        "a_overturn_8 fa fa-delicious",
+        "a_overturn_1 fa fa-bomb",
+        "a_overturn_2 fa fa-building",
+        "a_overturn_3 fa fa-car",
+        "a_overturn_4 fa fa-codepen",
+        "a_overturn_5 fa  fa-cube",
+        "a_overturn_6 fa fa-cubes",
+        "a_overturn_7 fa fa-database",
+        "a_overturn_8 fa fa-delicious"];
+    greyCard = "b_overturn";
+    box = document.getElementById('box');
+    cards = box.getElementsByTagName('li');
 
+    //cardIns是Card实例对象
+    cardIns=new Card(cardStyle,greyCard,box,cards);
+
+    shuffle(cardIns.cards, cardIns.cardStyle);
+
+    cardIns.clickable(cardIns.cards,false);
+    cardIns.clickable(cardIns.box,false);
+    cardIns.overturnGrey(2000,cardIns);
+    cardIns.clickCard(cardIns);//添加点击事件
     var restart = document.getElementById("btn");
     restart.onclick = function (event) {
         initiate();
     }
 }
 
-/*
-*全部翻转成灰色面
- */
-function overturn_grey(time) {
-    setTimeout(function () {
-        for (var i = 0; i < cards.length; i++) {
-            cards[i].className = card_grey + " animated flipInX";
-            // cards[i].setAttribute("class",card_grey);
-        }
-        clickable(cards, 1);
-    }, time);
 
-}
 
 /*
 *打乱存储牌数组的顺序
@@ -55,51 +71,3 @@ function shuffle(elem, style) {
 }
 
 
-/*
-*设置牌面是否可点击，比如当一个牌面点击过一次之后，不可再次点击
-* 参数elem是传入元素，choose是个bool值，1为可点击，0为不可点击
- */
-function clickable(elem, choose) {
-    var i = 0;
-    if (choose) {
-        for (i; i < elem.length; i++)
-            elem[i].setAttribute("disable", "false");
-    }
-    else {
-        for (i; i < elem.length; i++)
-            elem[i].setAttribute("disable", "disable");
-    }
-}
-
-/*
-*点击一个牌面的结果，检查是否与上一个牌面匹配，如果不匹配，则全部牌面翻转成灰色
- */
-function click_card(box, cards) {
-    var current;
-    var style;
-    var id;
-    var target;
-    box.onclick = function (event) {
-        event = event || window.event;
-        target = event.target;
-        id = parseInt(target.id);
-        target.className = "";
-        target.className = card_style[id] + " animated flipInY";
-        target.setAttribute("disable", "true");
-        if (record) {
-            lastone = target;
-            record = false;
-        }
-        else {
-            if (target.className == lastone.className) {
-            }
-            else {
-                overturn_grey(1000);
-                target.className += "animated shake";
-                lastone.className += "animated shake";
-            }
-            record = true;
-        }
-
-    }
-}
