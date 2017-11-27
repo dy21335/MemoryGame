@@ -9,7 +9,7 @@ function initiate() {
         cardIns;
 
     //一些变量的初始化
-    cardStyle = [" ", "a_overturn_1 fa fa-bomb",
+    cardStyle = ["a_overturn_1 fa fa-bomb",
         "a_overturn_2 fa fa-building",
         "a_overturn_3 fa fa-car",
         "a_overturn_4 fa fa-codepen",
@@ -50,8 +50,8 @@ function initiate() {
 *打乱存储牌数组的顺序
  */
 function random(arr) {
-    for (var i = 1; i < arr.length; i++) {
-        var iRand = parseInt((arr.length - 1) * Math.random() + 1);
+    for (var i = 0; i < arr.length; i++) {
+        var iRand = parseInt(arr.length * Math.random());
         var temp = arr[i];
         arr[i] = arr[iRand];
         arr[iRand] = temp;
@@ -66,7 +66,7 @@ function random(arr) {
 function shuffle(elem, style) {
     var result = random(style);
     for (var i = 0; i < elem.length; i++) {
-        elem[i].setAttribute("class", result[i + 1]);
+        elem[i].setAttribute("class", result[i]);
     }
 }
 
