@@ -59,7 +59,6 @@ function check(cardIns) {
         event = event || window.event;
         var target = event.target;
         var id = parseInt($(target).index());
-        console.log(id);
         var lastone = cardIns.lastone;
         target.className = cardIns.cardStyle[id] + " animated flipInY";
         target.disable="true";
