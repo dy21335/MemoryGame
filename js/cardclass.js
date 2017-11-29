@@ -10,6 +10,7 @@ function Card(cardStyle,greyCard,box,cards,text) {
     this.lastone={}; //记录上一个点击的卡片对象
     this.moves=0;//记录已经点击的次数
     this.text=text;
+    this.overturn=0;//记录所有卡片是否被成功翻转
 }
 
 Card.prototype.overturnGrey=overturnGrey;
@@ -21,6 +22,8 @@ Card.prototype.clickCard=clickCard;
  */
 function overturnGrey(time,cardIns) {
     cardIns.clickCard(cardIns,false);
+    cardIns.overturn=0;
+    console.log(cardIns.overturn);
     setTimeout(function () {
         for (var i = 0; i < cardIns.cards.length; i++) {
             cardIns.cards[i].className = cardIns.greyCard + " animated flipInX";
@@ -54,11 +57,11 @@ function clickable(elem, choose) {
  */
 function clickCard(cardIns,isadded) {
     if (isadded) {
-        cardIns.box.addEventListener("click", check.bind(box, cardIns),false);
+        cardIns.box.addEventListener("click",check.bind(box, cardIns),false);
         console.log("i added the event");
     }
     else {
-        cardIns.box.removeEventListener("click", check,false);
+        cardIns.box.removeEventListener("click",check,false);
         console.log("i removed the event");
     }
 }
@@ -78,9 +81,10 @@ function check(cardIns) {
             console.log(cardIns.moves);
             starStyle(cardIns.moves);
 
+
+
             cardIns.text.innerHTML=cardIns.moves.toString();
             // console.log("i have moved"+cardIns.moves);
-
 
             target.className = cardIns.cardStyle[id] + " animated flipInY";
 
@@ -92,14 +96,14 @@ function check(cardIns) {
             }
             else {
                 if (target.className == lastone.className) {
-                    console.log("we are same");
+
                 }
                 else {
-                    console.log("we are different");
                     target.className += "animated shake";
                     cardIns.lastone.className += "animated shake";
                     // cardIns.overturnGrey(1000, cardIns);
                     setTimeout(function () {
+                        cardIns.overturn=0;
                         for (var i = 0; i < cardIns.cards.length; i++) {
                             cardIns.cards[i].className = cardIns.greyCard + " animated flipInX";
                             // cards[i].setAttribute("class",greyCard);
@@ -110,6 +114,12 @@ function check(cardIns) {
                 console.log("i am record,i change myself to "+cardIns.record);
 
             }
+                //overturn值的改变
+                cardIns.overturn+=1;
+                console.log("i am overturn: "+cardIns.overturn);
+                if(cardIns.overturn==2){
+                    window.open("success.html",'_self');
+                }
         }
     // }
 }

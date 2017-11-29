@@ -8,7 +8,8 @@ function initiate() {
         cards,
         cardIns,
         top,
-        stars;
+        stars,
+        restartB;
 
     //一些变量的初始化
     cardStyle = ["a_overturn_1 fa fa-bomb",
