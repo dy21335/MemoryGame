@@ -6,7 +6,9 @@ function initiate() {
         greyCard,
         box,
         cards,
-        cardIns;
+        cardIns,
+        top,
+        stars;
 
     //一些变量的初始化
     cardStyle = ["a_overturn_1 fa fa-bomb",
@@ -28,21 +30,28 @@ function initiate() {
     greyCard = "b_overturn";
     box = document.getElementById('box');
     cards = box.getElementsByTagName('li');
+    text=document.getElementById('moves');
+    top=document.getElementById('top');
+    stars=document.getElementsByTagName('span');
 
     //cardIns是Card实例对象
-    cardIns=new Card(cardStyle,greyCard,box,cards);
+    cardIns=new Card(cardStyle,greyCard,box,cards,text);
 
     shuffle(cardIns.cards, cardIns.cardStyle);
 
-    cardIns.clickable(cardIns.cards,false);
-    cardIns.clickable(cardIns.box,false);
     cardIns.overturnGrey(2000,cardIns);
-    cardIns.clickCard(cardIns);//添加点击事件
 
     var restart = document.getElementById("undo");
     restart.onclick = function (event) {
+
+        for(var i=0;i<3;i++){
+            stars[i].setAttribute("class","fa fa-star");
+        }
+        text.innerHTML='0';
         initiate();
     }
+
+
 }
 
 
