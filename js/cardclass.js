@@ -21,15 +21,14 @@ Card.prototype.clickCard=clickCard;
 *全部翻转成灰色面
  */
 function overturnGrey(time,cardIns) {
-    cardIns.clickCard(cardIns,false);
     cardIns.overturn=0;
-    console.log(cardIns.overturn);
     setTimeout(function () {
         for (var i = 0; i < cardIns.cards.length; i++) {
             cardIns.cards[i].className = cardIns.greyCard + " animated flipInX";
-            // cards[i].setAttribute("class",greyCard);
         }
-        cardIns.clickCard(cardIns,true);
+        cardIns.box.addEventListener("click",check.bind(null, cardIns),false);
+        // cardIns.box.removeEventListener("click",check.bind(null, cardIns),false);
+        //为什么removeEventListener没有效果？
     }, time);
 
 }
@@ -58,11 +57,9 @@ function clickable(elem, choose) {
 function clickCard(cardIns,isadded) {
     if (isadded) {
         cardIns.box.addEventListener("click",check.bind(box, cardIns),false);
-        console.log("i added the event");
     }
     else {
-        cardIns.box.removeEventListener("click",check,false);
-        console.log("i removed the event");
+        cardIns.box.removeEventListener("click",check.bind(box, cardIns),false);
     }
 }
 /*
@@ -70,7 +67,7 @@ function clickCard(cardIns,isadded) {
 * 还要检查一下是否是点击在ul上，点击ul为无效
  */
 function check(cardIns) {
-    // return function() {
+
         var event = event || window.event;
         var target = event.target;
             if(target.tagName.toLowerCase()!="ul"){
@@ -84,15 +81,12 @@ function check(cardIns) {
 
 
             cardIns.text.innerHTML=cardIns.moves.toString();
-            // console.log("i have moved"+cardIns.moves);
 
             target.className = cardIns.cardStyle[id] + " animated flipInY";
 
             if (cardIns.record) {
-                // console.log("i am record,now i am "+cardIns.record);
                 cardIns.lastone = target;
                 cardIns.record = false;
-                // console.log("i am record,now i turn into "+cardIns.record);
             }
             else {
                 if (target.className == lastone.className) {
@@ -101,29 +95,28 @@ function check(cardIns) {
                 else {
                     target.className += "animated shake";
                     cardIns.lastone.className += "animated shake";
-                    // cardIns.overturnGrey(1000, cardIns);
+
                     setTimeout(function () {
                         cardIns.overturn=0;
                         for (var i = 0; i < cardIns.cards.length; i++) {
                             cardIns.cards[i].className = cardIns.greyCard + " animated flipInX";
-                            // cards[i].setAttribute("class",greyCard);
                         }
                     }, 1000);
                 }
+
                 cardIns.record = true;
-                console.log("i am record,i change myself to "+cardIns.record);
 
             }
-                //overturn值的改变
+                //overturn值的改变，当overturn值等于16时，表示16张卡片都翻转了过来
                 cardIns.overturn+=1;
-                console.log("i am overturn: "+cardIns.overturn);
-                if(cardIns.overturn==2){
+                if(cardIns.overturn==16){
                     window.open("success.html",'_self');
                 }
         }
-    // }
+
 }
 
+//改变星星的样式
 function starStyle(moves) {
     var top=document.getElementById('top');
     var stars=document.getElementsByTagName('span');

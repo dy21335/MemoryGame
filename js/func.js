@@ -35,6 +35,12 @@ function initiate() {
     top=document.getElementById('top');
     stars=document.getElementsByTagName('span');
 
+    //界面的初始化
+    for(var i=0;i<3;i++){
+        stars[i].setAttribute("class","fa fa-star");
+    }
+    text.innerHTML='0';
+
     //cardIns是Card实例对象
     cardIns=new Card(cardStyle,greyCard,box,cards,text);
 
@@ -42,15 +48,11 @@ function initiate() {
 
     cardIns.overturnGrey(2000,cardIns);
 
+
     var restart = document.getElementById("undo");
     restart.onclick = function (event) {
-
-        for(var i=0;i<3;i++){
-            stars[i].setAttribute("class","fa fa-star");
-        }
-        text.innerHTML='0';
         initiate();
-    }
+    };
 
 
 }
@@ -82,3 +84,14 @@ function shuffle(elem, style) {
 }
 
 
+function timedCount()
+{
+    var count =0;
+    count++;
+    var t=setTimeout("timedCount()",1000);
+    return t;
+}
+
+function stoptimeCount(timer) {
+    clearTimeout(timer);
+}
