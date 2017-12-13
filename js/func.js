@@ -44,7 +44,7 @@ function initiate() {
     text.innerHTML='0';
 
     //设置定时器
-    var time=[];
+    window.time=[];
     time[0]=0;
     var t=timedCount(time);//result数组，第一个元素是定时器标志，第二个是count的时间
 

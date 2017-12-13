@@ -73,6 +73,8 @@ function check() {
             }
                 //overturn值的改变，当overturn值等于16时，表示16张卡片都翻转了过来
                 if(this.overturn==2){
+                    localStorage.setItem("time1",time[0].toString());
+                    localStorage.setItem("moves1",this.moves.toString());
                     console.log("16 steps");
                     window.open("success.html",'_self');
                 }
@@ -87,12 +89,17 @@ function starStyle(moves) {
     switch (moves){
         case 8:
             stars[2].setAttribute("class","fa fa-star-o");
+            localStorage.setItem("stars","2");
             break;
         case 16:
             stars[1].setAttribute("class","fa fa-star-o");
+            localStorage.setItem("stars","1");
             break;
         case 24:
             stars[0].setAttribute("class","fa fa-star-o");
+            localStorage.setItem("stars1","0");
             break;
+        default:
+            localStorage.setItem("stars1","0");
     }
 }
