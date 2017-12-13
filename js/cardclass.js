@@ -72,7 +72,7 @@ function check() {
 
             }
                 //overturn值的改变，当overturn值等于16时，表示16张卡片都翻转了过来
-                if(this.overturn==2){
+                if(this.overturn==16){
                     localStorage.setItem("time1",time[0].toString());
                     localStorage.setItem("moves1",this.moves.toString());
                     console.log("16 steps");
