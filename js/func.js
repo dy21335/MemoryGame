@@ -11,6 +11,8 @@ function initiate() {
         stars,
         restartB;
 
+    // var check=check.bind(cardIns);
+
     //一些变量的初始化
     cardStyle = ["a_overturn_1 fa fa-bomb",
         "a_overturn_2 fa fa-building",
@@ -41,6 +43,12 @@ function initiate() {
     }
     text.innerHTML='0';
 
+    //设置定时器
+    var time=[];
+    time[0]=0;
+    var t=timedCount(time);//result数组，第一个元素是定时器标志，第二个是count的时间
+
+
     //cardIns是Card实例对象
     cardIns=new Card(cardStyle,greyCard,box,cards,text);
 
@@ -48,9 +56,14 @@ function initiate() {
 
     cardIns.overturnGrey(2000,cardIns);
 
+    var cardClick=check.bind(cardIns);
+    cardIns.box.addEventListener("click",cardClick,false);
 
     var restart = document.getElementById("undo");
     restart.onclick = function (event) {
+        console.log(time[0]);
+        clearInterval(t);
+        cardIns.box.removeEventListener("click",cardClick,false);
         initiate();
     };
 
@@ -84,14 +97,12 @@ function shuffle(elem, style) {
 }
 
 
-function timedCount()
+function timedCount(time)
 {
-    var count =0;
-    count++;
-    var t=setTimeout("timedCount()",1000);
+    time[0]=0;
+    var t;
+    t=window.setInterval(function () {
+        time[0]++;
+    },1000);
     return t;
-}
-
-function stoptimeCount(timer) {
-    clearTimeout(timer);
 }
