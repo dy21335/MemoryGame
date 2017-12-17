@@ -22,8 +22,14 @@ body{
     font-size: 21px;
 }
 
+#top>#timer{
+    margin-left: 20px;
+    display: inline-block;
+    width: 150px;
+}
+
 #top>#undo{
-    margin-left: 100px;
+    margin-left: 90px;
 }
 #wrapper{
     width: 480px;

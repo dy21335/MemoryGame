@@ -11,6 +11,7 @@ function Card(cardStyle,greyCard,box,cards,text) {
     this.moves=0;//记录已经点击的次数
     this.text=text;
     this.overturn=0;//记录所有卡片是否被成功翻转，一开始只有0张牌翻转
+    this.first=true;//记录是否第一次点击
 }
 
 Card.prototype.overturnGrey=overturnGrey;
@@ -38,14 +39,26 @@ function overturnGrey(time,cardIns) {
 function check() {
     var event = event || window.event;
     var target = event.target;
+
+    //点击第一张卡片时，开始计时
+    if(this.first==true){
+        console.log("i am here");
+     var timer=document.getElementById('timer');
+         this.first=false;
+         window.t=timedCount(time,timer);//time[0]是时间
+    }
+
+    if ($(target).hasClass('flipInY') || $(target).hasClass('shake')) {
+        return
+    }
+
     if(target.tagName.toLowerCase()!="ul"){
              // console.log(target.tagName.toLowerCase());
             var id = parseInt($(target).index());
             var lastone = this.lastone;
 
-            //move的变化
+            //修改move值和星星的样式
             this.moves++;
-            // console.log(this.moves);
             starStyle(this.moves);
             this.text.innerHTML=this.moves.toString();
 
@@ -56,9 +69,9 @@ function check() {
                 this.record = false;
             }
             else {
+
                 if (target.className == lastone.className) {
                     this.overturn+=2;
-                    // console.log("overturn is"+this.overturn);
 
                 }
                 else {
@@ -75,7 +88,6 @@ function check() {
                 if(this.overturn==16){
                     localStorage.setItem("time1",time[0].toString());
                     localStorage.setItem("moves1",this.moves.toString());
-                    console.log("16 steps");
                     window.open("success.html",'_self');
                 }
         }
